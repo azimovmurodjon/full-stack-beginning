@@ -13,7 +13,7 @@ public class CustomerService {
 
     private final CustomerDao customerDao;
 
-    public CustomerService(@Qualifier("jpa") CustomerDao customerDao) {
+    public CustomerService(@Qualifier("jdbc") CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
 
@@ -24,7 +24,7 @@ public class CustomerService {
     public Customer getCustomer(Integer id) {
         return customerDao.selectCustomerById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "customer with id [%s] not found".formatted(id)
+                        "Customer with id [%s] not found".formatted(id)
                 ));
     }
 
@@ -33,7 +33,7 @@ public class CustomerService {
         String email = customerRegistrationRequest.email();
         if (customerDao.existsPersonWithEmail(email)) {
             throw new DuplicateResourceException(
-                    "email already taken"
+                    "Email already taken"
             );
         }
 
@@ -50,7 +50,7 @@ public class CustomerService {
     public void deleteCustomerById(Integer customerId) {
         if (!customerDao.existsPersonWithId(customerId)) {
             throw new ResourceNotFoundException(
-                    "customer with id [%s] not found".formatted(customerId)
+                    "Customer with id [%s] not found".formatted(customerId)
             );
         }
 
@@ -77,7 +77,7 @@ public class CustomerService {
         if (updateRequest.email() != null && !updateRequest.email().equals(customer.getEmail())) {
             if (customerDao.existsPersonWithEmail(updateRequest.email())) {
                 throw new DuplicateResourceException(
-                        "email already taken"
+                        "Email already taken"
                 );
             }
             customer.setEmail(updateRequest.email());

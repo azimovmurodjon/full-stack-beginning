@@ -29,7 +29,7 @@ public class Main {
             String lastName = name.lastName();
             Customer customer = new Customer(
                     firstName +  " " + lastName,
-                    firstName.toLowerCase() + "." + lastName.toLowerCase() + "@amigoscode.com",
+                    firstName.toLowerCase() + "." + lastName.toLowerCase() + "@example.com",
                     random.nextInt(16, 99)
             );
             customerRepository.save(customer);
