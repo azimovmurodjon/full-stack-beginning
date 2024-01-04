@@ -12,14 +12,14 @@ import static org.mockito.Mockito.*;
 
 class CustomerJPADataAccessServiceTest {
 
-    private CustomerJPADataAccessService underaTest;
+    private CustomerJPADataAccessService underTest;
     private AutoCloseable autoCloseable;
     @Mock private CustomerRepository customerRepository;
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        underaTest = new CustomerJPADataAccessService(customerRepository);
+        underTest = new CustomerJPADataAccessService(customerRepository);
     }
 
     @AfterEach
@@ -34,7 +34,7 @@ class CustomerJPADataAccessServiceTest {
     @Test
     void selectCustomerById() {
         //When
-        underaTest.selectAllCustomers();
+        underTest.selectAllCustomers();
 
         //Then
         verify(customerRepository)
@@ -47,13 +47,21 @@ class CustomerJPADataAccessServiceTest {
         int id = 1;
 
         //When
-        underaTest.selectCustomerById(id);
+        underTest.selectCustomerById(id);
         //Then
         verify(customerRepository).findById(id);
     }
 
     @Test
     void existsPersonWithEmail() {
+        // Given
+        String email = "foo@gmail.com";
+
+        // When
+        underTest.existsPersonWithEmail(email);
+
+        // Then
+        verify(customerRepository).existsCustomerByEmail(email);
     }
 
     @Test
