@@ -16,7 +16,6 @@ public class CustomerService {
     public CustomerService(@Qualifier("jdbc") CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
-
     public List<Customer> getAllCustomers() {
         return customerDao.selectAllCustomers();
     }
