@@ -78,9 +78,26 @@ class CustomerJPADataAccessServiceTest {
 
     @Test
     void deleteCustomerById() {
+        //Given
+        int id = 1;
+
+        //When
+        underTest.deleteCustomerById(id);
+
+        //Then
+        verify(customerRepository).deleteById(id);
     }
 
     @Test
     void updateCustomer() {
+        //Given
+        Customer customer = new Customer(
+                1,"Ali", "Ali@gmail.com", 32
+        );
+        //When
+        underTest.updateCustomer(customer);
+
+        //Then
+        verify(customerRepository).save(customer);
     }
 }
