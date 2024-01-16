@@ -9,25 +9,43 @@ class CustomerServiceTest {
 
     @BeforeEach
     void setUp() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 
     @Test
     void getAllCustomers() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 
     @Test
     void getCustomer() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 
     @Test
     void addCustomer() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 
     @Test
     void deleteCustomerById() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 
     @Test
     void updateCustomer() {
+        //GIVCEN
+        //WHEN
+        //THEN
     }
 }
