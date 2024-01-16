@@ -2,16 +2,21 @@ package com.amigoscode.customer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceTest {
 
+    @Mock
+    private CustomerDao customerDao;
+    private CustomerService underTest;
+
     @BeforeEach
     void setUp() {
-        //GIVCEN
-        //WHEN
-        //THEN
+        AutoCloseable autoCloseable = MockitoAnnotations.openMocks(this);
+        underTest = new CustomerService(customerDao);
     }
 
     @Test
