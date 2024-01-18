@@ -2,50 +2,69 @@ package com.amigoscode.customer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class CustomerServiceTest {
+
+    @Mock
+    private CustomerDao customerDao;
+    private CustomerService underTest;
 
     @BeforeEach
     void setUp() {
-        //GIVCEN
-        //WHEN
-        //THEN
+        AutoCloseable autoCloseable = MockitoAnnotations.openMocks(this);
+        underTest = new CustomerService(customerDao);
     }
 
     @Test
     void getAllCustomers() {
-        //GIVCEN
         //WHEN
+        underTest.getAllCustomers();
+
         //THEN
+        verify(customerDao).selectAllCustomers();
     }
 
     @Test
     void getCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void addCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void deleteCustomerById() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void updateCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 }
