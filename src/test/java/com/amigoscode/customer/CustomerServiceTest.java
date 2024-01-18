@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CustomerServiceTest {
@@ -24,36 +25,46 @@ class CustomerServiceTest {
 
     @Test
     void getAllCustomers() {
-        //GIVCEN
         //WHEN
+        underTest.getAllCustomers();
+
         //THEN
+        verify(customerDao).selectAllCustomers();
     }
 
     @Test
     void getCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void addCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void deleteCustomerById() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 
     @Test
     void updateCustomer() {
-        //GIVCEN
+        //GIVEN
+
         //WHEN
+
         //THEN
     }
 }
