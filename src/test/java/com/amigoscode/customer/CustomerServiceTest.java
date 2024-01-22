@@ -50,7 +50,6 @@ class CustomerServiceTest {
 
         //THEN
         assertThat(actual).isEqualTo(customer);
-
     }
 
     @Test
