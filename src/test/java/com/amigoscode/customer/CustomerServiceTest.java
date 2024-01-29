@@ -55,7 +55,7 @@ class CustomerServiceTest {
 
     }
     @Test
-    void willThrowWhengetCustomerReturnsEmptyOptional() {
+    void willThrowWhenGetCustomerReturnsEmptyOptional() {
         //GIVEN
         int id = 10;
 
