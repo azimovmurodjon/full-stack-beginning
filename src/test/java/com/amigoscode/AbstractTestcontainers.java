@@ -28,6 +28,7 @@ public abstract class AbstractTestcontainers {
         flyway.migrate();
     }
 
+
     @Container
     protected static final PostgreSQLContainer<?> postgreSQLContainer =
             new PostgreSQLContainer<>("postgres:latest")
