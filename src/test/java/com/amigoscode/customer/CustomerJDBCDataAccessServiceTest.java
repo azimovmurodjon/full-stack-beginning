@@ -57,7 +57,6 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .map(Customer::getId)
                 .findFirst()
                 .orElseThrow();
-
         // When
         Optional<Customer> actual = underTest.selectCustomerById(id);
 
