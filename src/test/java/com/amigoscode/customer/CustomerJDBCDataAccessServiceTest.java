@@ -22,7 +22,6 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 customerRowMapper
         );
     }
-
     @Test
     void selectAllCustomers() {
         // Given
