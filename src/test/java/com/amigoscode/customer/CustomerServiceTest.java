@@ -56,6 +56,7 @@ class CustomerServiceTest {
         assertThat(actual).isEqualTo(customer);
 
     }
+
     @Test
     void willThrowWhenGetCustomerReturnsEmptyOptional() {
         //GIVEN
@@ -100,6 +101,7 @@ class CustomerServiceTest {
         assertThat(capturedCustomer.getAge()).isEqualTo((request.age()));
 
     }
+
     @Test
     void willThrowWhenEmailExistsWhileAddingACustomer() {
         //GIVEN
@@ -112,7 +114,7 @@ class CustomerServiceTest {
                 "Alex", email, 19
         );
         //WHEN
-        assertThatThrownBy(()-> underTest.addCustomer(request))
+        assertThatThrownBy(() -> underTest.addCustomer(request))
                 .isInstanceOf(DuplicateResourceException.class)
                 .hasMessage("Email already taken");
 
@@ -124,10 +126,33 @@ class CustomerServiceTest {
     @Test
     void deleteCustomerById() {
         //GIVEN
+        int id = 10;
+
+        when(customerDao.existsPersonWithId(id)).thenReturn(true);
 
         //WHEN
+        underTest.deleteCustomerById(id);
 
         //THEN
+        verify(customerDao).deleteCustomerById(id);
+    }
+
+    @Test
+    void willThrowDeleteCustomerByIdNotExists() {
+        //GIVEN
+        int id = 10;
+
+        when(customerDao.existsPersonWithId(id)).thenReturn(false);
+
+        //WHEN
+        assertThatThrownBy(
+                () -> underTest.deleteCustomerById(id))
+                .isInstanceOf(ResourceNotFoundException.class)
+                .hasMessage("Customer with id [%s] not found".formatted(id)
+                );
+
+        //THEN
+        verify(customerDao, never()).deleteCustomerById(id);
     }
 
     @Test

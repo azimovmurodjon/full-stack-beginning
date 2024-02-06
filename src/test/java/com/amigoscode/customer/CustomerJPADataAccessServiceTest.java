@@ -29,10 +29,6 @@ class CustomerJPADataAccessServiceTest {
 
     @Test
     void selectAllCustomers() {
-    }
-
-    @Test
-    void selectCustomerById() {
         //When
         underTest.selectAllCustomers();
 
@@ -42,13 +38,27 @@ class CustomerJPADataAccessServiceTest {
     }
 
     @Test
-    void insertCustomer() {
+    void selectCustomerById() {
         //Given
         int id = 1;
 
         //When
         underTest.selectCustomerById(id);
+
         //Then
+        verify(customerRepository).findById(id);
+    }
+
+    @Test
+    void insertCustomer() {
+        //Given
+        int id = 1;
+
+        //When
+
+        underTest.selectCustomerById(id);
+        //Then
+
         verify(customerRepository).findById(id);
     }
 
