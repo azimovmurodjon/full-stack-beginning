@@ -41,7 +41,7 @@ class CustomerServiceTest {
     }
 
     @Test
-    void getCustomer() {
+    void canGetCustomer() {
         //GIVEN
         int id = 10;
         Customer customer = new Customer(
@@ -156,11 +156,33 @@ class CustomerServiceTest {
     }
 
     @Test
-    void updateCustomer() {
+    void canUpdateAllCustomerProperties() {
         //GIVEN
+        int id = 10;
+        Customer customer = new Customer(
+                id, "Alex", "alex@gmail.com", 33
+        );
+        when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
+
+        String newEmail = "alexandro@gmail.com";
+
+        CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(
+                "Alexandro", newEmail, 23);
+
+        when(customerDao.existsPersonWithEmail(newEmail)).thenReturn(false);
 
         //WHEN
+        underTest.updateCustomer(id, updateRequest);
 
         //THEN
+        ArgumentCaptor<Customer> customerArgumentCaptor =
+                ArgumentCaptor.forClass(Customer.class);
+        verify(customerDao).updateCustomer(customerArgumentCaptor.capture());
+        Customer captureCustomer = customerArgumentCaptor.getValue();
+
+        assertThat(captureCustomer.getAge()).isEqualTo(updateRequest.age());
+        assertThat(captureCustomer.getEmail()).isEqualTo(updateRequest.email());
+        assertThat(captureCustomer.getName()).isEqualTo(updateRequest.name());
+
     }
 }
