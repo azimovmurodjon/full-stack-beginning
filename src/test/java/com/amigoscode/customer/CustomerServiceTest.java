@@ -275,6 +275,7 @@ class CustomerServiceTest {
         assertThat(captureCustomer.getName()).isEqualTo(customer.getName());
 
     }
+
     @Test
     void willThrowWhenTryingToUpdateCustomerEmailWhenAlreadyTaken() {
         //GIVEN
