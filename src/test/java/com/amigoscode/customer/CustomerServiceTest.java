@@ -273,6 +273,7 @@ class CustomerServiceTest {
         assertThat(captureCustomer.getAge()).isEqualTo(updateRequest.age());
         assertThat(captureCustomer.getEmail()).isEqualTo(customer.getEmail());
         assertThat(captureCustomer.getName()).isEqualTo(customer.getName());
+
     }
 
     @Test
