@@ -301,7 +301,6 @@ class CustomerServiceTest {
 
         verify(customerDao, never()).updateCustomer(any());
 
-
     }
 
     @Test
