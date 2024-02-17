@@ -55,7 +55,6 @@ public class CustomerService {
 
         customerDao.deleteCustomerById(customerId);
     }
-
     public void updateCustomer(Integer customerId,
                                CustomerUpdateRequest updateRequest) {
         // TODO: for JPA use .getReferenceById(customerId) as it does does not bring object into memory and instead a reference
