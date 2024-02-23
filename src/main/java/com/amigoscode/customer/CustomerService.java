@@ -35,6 +35,7 @@ public class CustomerService {
                     "Email already taken"
             );
         }
+
         // add
         Customer customer = new Customer(
                 customerRegistrationRequest.name(),
