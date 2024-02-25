@@ -52,6 +52,7 @@ public class CustomerService {
                     "Customer with id [%s] not found".formatted(customerId)
             );
         }
+
         customerDao.deleteCustomerById(customerId);
     }
     public void updateCustomer(Integer customerId,
