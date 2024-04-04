@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 @Testcontainers
 public abstract class AbstractTestcontainers {
+
     @BeforeAll
     static void beforeAll() {
         Flyway flyway = Flyway
