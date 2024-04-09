@@ -81,6 +81,7 @@ class CustomerServiceTest {
         int id = 10;
         String email = "alex@gmail.com";
 
+
         when(customerDao.existsPersonWithEmail(email)).thenReturn(false);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
